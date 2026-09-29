@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Siasatan JTKSM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>JABATAN TENAGA KERJA SEMENANJUNG MALAYSIA</h2>
+            <h3>LAPORAN SIASATAN PERMOHONAN KEBENARAN KETUA PENGARAH</h3>
+        </header>
+
+        <form id="laporanForm">
+            <!-- Maklumat Asas -->
+            <div class="section">
+                <div class="grid-2">
+                    <div>
+                        <label>Pejabat Tenaga Kerja:</label>
+                        <input type="text" name="ptk">
+                    </div>
+                    <div>
+                        <label>No. Fail PMT:</label>
+                        <input type="text" name="no_pmt">
+                    </div>
+                    <div>
+                        <label>No. Fail Majikan (LMD):</label>
+                        <input type="text" name="no_lmd">
+                    </div>
+                    <div>
+                        <label>Tarikh & Masa Siasatan:</label>
+                        <input type="datetime-local" name="tarikh_siasatan">
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAHAGIAN A: Jenis Permohonan -->
+            <div class="section">
+                <h3>BAHAGIAN A: JENIS PERMOHONAN</h3>
+                <p class="instruction">Sila pilih jenis permohonan utama. Borang akan diubah suai secara automatik di Bahagian C.</p>
+                <select id="jenis_permohonan" name="jenis_permohonan" required>
+                    <option value="">-- Pilih Jenis Permohonan --</option>
+                    <option value="perlanjutan_upah">Perlanjutan Tempoh Bayaran Upah</option>
+                    <option value="pendahuluan_upah">Pendahuluan Upah</option>
+                    <option value="potongan_upah">Potongan Upah (Umum)</option>
+                    <option value="waktu_kerja">Kelonggaran Waktu Kerja / Had Kerja Lebih Masa</option>
+                </select>
+            </div>
+
+            <!-- BAHAGIAN B: Maklumat Syarikat -->
+            <div class="section">
+                <h3>BAHAGIAN B: MAKLUMAT SYARIKAT</h3>
+                <div class="grid-2">
+                    <div>
+                        <label>Nama Syarikat:</label>
+                        <input type="text" name="nama_syarikat">
+                    </div>
+                    <div>
+                        <label>No. Pendaftaran Perniagaan (SSM):</label>
+                        <input type="text" name="ssm">
+                    </div>
+                    <div class="full-width">
+                        <label>Alamat Lengkap:</label>
+                        <textarea name="alamat"></textarea>
+                    </div>
+                    <div>
+                        <label>Sektor:</label>
+                        <select name="sektor">
+                            <option value="Perkhidmatan">Perkhidmatan</option>
+                            <option value="Pembuatan">Pembuatan</option>
+                            <option value="Pembinaan">Pembinaan</option>
+                            <option value="Perladangan">Perladangan</option>
+                            <option value="Pertanian">Pertanian</option>
+                            <option value="Lain-lain">Lain-lain</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <h4>Maklumat Pekerja:</h4>
+                <table class="data-table">
+                    <tr>
+                        <th>Perkara</th>
+                        <th>Tempatan</th>
+                        <th>Asing</th>
+                        <th>Jumlah</th>
+                    </tr>
+                    <tr>
+                        <td>Lelaki</td>
+                        <td><input type="number" class="calc" id="lelaki_temp"></td>
+                        <td><input type="number" class="calc" id="lelaki_asing"></td>
+                        <td><input type="number" id="lelaki_jum" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Perempuan</td>
+                        <td><input type="number" class="calc" id="perempuan_temp"></td>
+                        <td><input type="number" class="calc" id="perempuan_asing"></td>
+                        <td><input type="number" id="perempuan_jum" readonly></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- BAHAGIAN C: Hasil Siasatan -->
+            <div class="section">
+                <h3>BAHAGIAN C: HASIL SIASATAN</h3>
+                
+                <label>1. Pematuhan Undang-Undang:</label>
+                <select name="pematuhan">
+                    <option value="patuh">Patuh</option>
+                    <option value="tidak_patuh">Tidak Patuh</option>
+                </select>
+                <textarea placeholder="Jika tidak patuh, nyatakan kesalahan..." name="catatan_pematuhan" style="margin-top:10px;"></textarea>
+
+                <label>2. Latar Belakang Permohonan:</label>
+                <textarea name="latar_belakang"></textarea>
+
+                <div id="dinamik_maklumat_permohonan" class="dynamic-section">
+                    <label>3. Maklumat Permohonan (Berdasarkan Lampiran 5):</label>
+                    <div id="soalan_dinamik_container">
+                        <em>Sila pilih Jenis Permohonan di Bahagian A untuk memaparkan panduan siasatan di sini.</em>
+                    </div>
+                </div>
+
+                <label>4. Kebaikan Kepada Pekerja:</label>
+                <textarea name="kebaikan_pekerja"></textarea>
+
+                <label>5. Cadangan Tarikh Permulaan Oleh Majikan:</label>
+                <input type="date" name="tarikh_mula">
+            </div>
+
+            <!-- BAHAGIAN D: Syor Pegawai -->
+            <div class="section">
+                <h3>BAHAGIAN D: ULASAN DAN SYOR PEGAWAI PENYIASAT</h3>
+                <label><input type="radio" name="syor" value="sokong"> Permohonan Disokong</label>
+                <label><input type="radio" name="syor" value="tidak_sokong"> Permohonan Tidak Disokong</label>
+                
+                <div class="grid-2" style="margin-top:15px;">
+                    <div><label>Nama:</label><input type="text" name="nama_pegawai"></div>
+                    <div><label>Jawatan:</label><input type="text" name="jawatan_pegawai"></div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn-submit" onclick="window.print()">Cetak / Simpan PDF</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

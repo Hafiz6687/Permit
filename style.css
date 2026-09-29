@@ -1,0 +1,132 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 15px;
+}
+
+header h2 { margin: 0 0 5px 0; font-size: 18px; }
+header h3 { margin: 0; font-size: 16px; font-weight: normal; }
+
+.section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.section h3 {
+    background: #e9ecef;
+    padding: 10px;
+    font-size: 14px;
+    margin-top: 0;
+}
+
+.instruction {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+input[type="text"], input[type="number"], input[type="datetime-local"], input[type="date"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #f8f9fa;
+    font-size: 13px;
+}
+
+.dynamic-section {
+    background-color: #fcfcfc;
+    border-left: 3px solid #0056b3;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.dynamic-item {
+    margin-bottom: 10px;
+}
+
+.btn-submit {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.btn-submit:hover {
+    background: #004494;
+}
+
+.actions {
+    text-align: right;
+    margin-top: 20px;
+}
+
+@media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; }
+    .btn-submit { display: none; }
+}
